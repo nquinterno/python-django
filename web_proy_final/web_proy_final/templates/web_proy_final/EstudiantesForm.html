@@ -1,0 +1,76 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block EstudiantesForm %}
+<div class="container-fluid pt-1 pb-1" style= "background-color: #212529">
+    <div class=" d-flex justify-content-center fondo-oscuro row">
+        <div class="d-flex justify-content-center col-6 fondo-oscuro">
+
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#creaRegistro">
+                Crear Registro
+            </button>
+        </div>
+        <div class="d-flex justify-content-center fondo-oscuro col-6">
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#consulta">
+                Constular Registro
+            </button>
+        </div>
+    </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="consulta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Consultar Estudiante</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/busquedaEstudiantes/" method="GET">{% csrf_token %}
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nombre, Apellido o Email del Alumno</label>
+                    <input type="text" class="form-control" id="busqueda" name= "busqueda" placeholder="Nombre, Apellido o Email del Alumno">
+                </div>
+                <input type="submit" value="Buscar" class="btn btn-primary">
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="creaRegistro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Crear Registro de Estudiante</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="/EstudiantesForm/" method = "POST"> {% csrf_token %}
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Nombre">
+                </div>
+                <div class="mb-3">
+                    <label for="formGroupExampleInput" class="form-label">Apellido</label>
+                    <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" aria-describedby="emailHelp">
+                </div>
+                <input type="submit" value="Crear" class="btn btn-success">
+            </form>
+            
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block profesoresForm %}
+<div class="row d-flex justify-content-center">
+    <div class="col-5 mt-1 my-1">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Crear Nuevo Profesor</h5>
+                <form action="" method="POST">{% csrf_token %}
+                    <div class="mb-3">
+                        <input type="text" class="form-control mt-1" id="nombre" name= "nombre" placeholder="Nombre Profesor">
+                        <input type="text" class="form-control mt-1" id="apellido" name= "apellido" placeholder="Nombre Profesor">
+                        <input type="text" class="form-control mt-1" id="mail" name= "mail" placeholder="Email">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Crear Profesor">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-5 mt-1 mx-1">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Buscar Profesor</h5>
+                <form action="/busquedaProfesores/" method="GET">{% csrf_token %}
+                    <div class="mb-3">
+                        <input type="text" class="form-control mt-1" id="nombre" name= "busqueda" placeholder="Nombre, Apellido o Mail del Profesor">
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Buscar Profesor">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

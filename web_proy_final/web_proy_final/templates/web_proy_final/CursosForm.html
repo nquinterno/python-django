@@ -1,0 +1,64 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block CursosForm %}
+
+{% if miForm.errors %}
+    <p style = "color: red">Datos cargados erroneamente</p>
+{% endif %}
+<!-- class="d-flex justify-content-center mt-2 mb-2" -->
+<div class="row d-flex justify-content-center">
+    <div class="col-6">
+        <form action="" method = "POST"> {% csrf_token %}
+            <h3>Crear nuevo Curso</h3>
+            <table>
+                {{miForm.as_table}}
+            </table>
+            <input type="submit" value="Crear" class="btn btn-success">
+        </form>
+    </div>
+    
+    <div class="col-6">
+        <form action="/busquedaCursos/" method = "GET"> {% csrf_token %}
+            <div class="row"><h3>Buscar Curso</h3></div>
+            <div class="row">
+                <input type="text" class="form-control" id="busqueda" name="busqueda" placeholder="Numero del Curso o Nombre del curso" aria-describedby="emailHelp">
+            </div>
+            <!-- <div class="row">
+                <input type="text" class="form-control" id="nombreCurso" name="nombreCurso" placeholder="Nombre del Curso" aria-describedby="emailHelp">
+            </div> -->
+
+            <input type="submit" value="Buscar" class="btn btn-success">
+        </form>
+    </div>
+
+</div>
+
+{% if busqueda %}
+{% for busq in busqueda %}
+
+<div class="alert alert-light" role="alert">
+    <div class="row">
+        Curso Numero: {{busq.numero_curso}}
+    </div>
+    <div class="row">
+        Nombre Curso :{{busq.tipo_curso}}
+    </div>
+  </div>
+
+{% endfor %}
+{% endif %}
+
+
+
+ <!-- <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="numero_curso" name="numero_curso" placeholder="Numero Curso">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="tipo_curso" name="tipo_curso" placeholder="Nombre Curso">
+    </div> -->
+
+
+
+{% endblock %}

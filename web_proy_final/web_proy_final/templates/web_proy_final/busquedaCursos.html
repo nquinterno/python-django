@@ -1,0 +1,26 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block EstudiantesForm %}
+{% if error %}
+
+<div class="row">
+    <p style="color:red">{{error}}</p>
+</div>
+
+{% endif %}
+{% if busqueda %}
+{% for busq in busqueda %}
+
+<div class="alert alert-light" role="alert">
+    <div class="row">
+        Curso Numero: {{busq.numero_curso}}
+    </div>
+    <div class="row">
+        Nombre Curso :{{busq.tipo_curso}}
+    </div>
+  </div>
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}

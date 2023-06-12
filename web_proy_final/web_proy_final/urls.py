@@ -15,9 +15,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from web_proy_final.views import inicio
+from web_proy_final.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("",inicio)
+    path("",inicio, name="Inicio"),
+    path("Estudiantes/",Estudiantes, name="Estudiantes"),
+    path("EstudiantesForm/",EstudiantesForm, name="EstudiantesForm"),
+    path("busquedaEstudiantes/",busquedaEstudiantes,name="busquedaEstudiantes"),
+    path("Cursos/",Cursos, name="Cursos"),
+    path("CursosForm/",CursosForm, name="CursosForm"),
+    path("busquedaCursos/",busquedaCursos,name="busquedaCursos"),
+    path("ProfesoresForm/",ProfesoresForm, name="ProfesoresForm"),
+    path("busquedaProfesores/",busquedaProfesor, name="busquedaProfesores"),
+    # path("Formulario/",formulario, name="Formulario")
 ]

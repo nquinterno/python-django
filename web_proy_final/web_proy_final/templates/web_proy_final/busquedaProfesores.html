@@ -1,0 +1,29 @@
+{% extends "padre.html" %}
+{% load static %}
+{% block busquedaProfesores %}
+{% if error %}
+    <div class="row">
+        <p style="color:red">{{error}}</p>
+    </div>
+{% endif %}
+
+{% if busqueda %}
+    <div class="row mt-2 d-flex justify-content-center">
+        <h4 style="text-align: center;">Resultados de Busqueda</h4>
+    </div>
+    {% for busq in busqueda %}
+
+    <div class="alert alert-light" role="alert">
+        <div class="row d-flex justify-content-center">
+            Nombre: {{busq.nombre}}
+        </div>
+        <div class="row d-flex justify-content-center">
+            Apellido: {{busq.apellido}}
+        </div>
+        <div class="row d-flex justify-content-center">
+            Email: {{busq.mail}}
+        </div>
+    </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}
